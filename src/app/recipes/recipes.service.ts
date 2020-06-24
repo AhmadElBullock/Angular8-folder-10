@@ -7,5 +7,9 @@ export class RecipesService {
         new Recipe('A Test Recipe2', 'This is simply a test2', 'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg')
       ];
 
+      getRecipes() {
+        return this.recipes.slice();
+      }
+
       SelectedItem = new EventEmitter<Recipe>();
 }
