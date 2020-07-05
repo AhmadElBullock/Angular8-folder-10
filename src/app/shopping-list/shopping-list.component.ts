@@ -9,12 +9,12 @@ import { ShoppingService } from './shopping.service';
   styleUrls: ['./shopping-list.component.css']
 })
 export class ShoppingListComponent implements OnInit {
-  ingredients: Ingredient[] = [];
+  ingredients: Ingredient[];
 
   constructor(private shoppingService: ShoppingService) { }
 
   ngOnInit() {
-    this.ingredients = this.shoppingService.ingredients;
+    this.ingredients = this.shoppingService.getIngredient();
   }
 
   /* newIngredientReceived(newIngredient: Ingredient) {

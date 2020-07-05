@@ -6,7 +6,11 @@ export class ShoppingService {
         new Ingredient('Tomatoes', 10),
       ];
 
-      newIngredien(newIngredient: Ingredient) {
+      getIngredient() {
+        return this.ingredients.slice()
+      }
+
+      newIngredient(newIngredient: Ingredient) {
         this.ingredients.push(newIngredient);
       }
 }
