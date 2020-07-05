@@ -28,10 +28,13 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   toShoppingList(newIngredients: Ingredient[]) {
-    for (let i = 0 ;i < newIngredients.length; i++) {
+    /* for (let i = 0 ;i < newIngredients.length; i++) {
       console.log(newIngredients[i]);;
       this.shoppingService.newIngredient(newIngredients[i])
-    } 
+    }  */
+    for (let newIngredient of newIngredients) {
+      this.shoppingService.newIngredient(newIngredient)
+    }
   }
 
 }
