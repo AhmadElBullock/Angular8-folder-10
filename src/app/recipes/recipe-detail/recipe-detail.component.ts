@@ -1,6 +1,8 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../recipe.model';
 import { RecipesService } from '../recipes.service';
+import { Ingredient } from 'src/app/shared/ingredient.model';
+import { ShoppingService } from 'src/app/shopping-list/shopping.service';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -9,10 +11,11 @@ import { RecipesService } from '../recipes.service';
 })
 export class RecipeDetailComponent implements OnInit {
  // @Input() recipe: Recipe;
+ // @ViewChild('shoppingIngredient', {static: false}) elRef: ElementRef;
   recipe: Recipe;
   selectedToDetail = false;
 
-  constructor(private recipesService: RecipesService) {
+  constructor(private recipesService: RecipesService, private shoppingService: ShoppingService) {
     this.recipesService.SelectedItem.subscribe(
       (Item: Recipe) => {
         this.recipe = Item;
@@ -22,6 +25,13 @@ export class RecipeDetailComponent implements OnInit {
    }
 
   ngOnInit() {
+  }
+
+  toShoppingList(newIngredients: Ingredient[]) {
+    for (let i = 0 ;i < newIngredients.length; i++) {
+      console.log(newIngredients[i]);;
+      this.shoppingService.newIngredient(newIngredients[i])
+    } 
   }
 
 }
